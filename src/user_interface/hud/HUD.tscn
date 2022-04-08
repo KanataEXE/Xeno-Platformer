@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/kenney_future_narrow_32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/user_interface/hud/HUD.gd" type="Script" id=3]
+
+[node name="HUD" type="MarginContainer"]
+anchor_right = 1.0
+margin_bottom = 122.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBC" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1260.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="TimeScoreContainer" type="VBoxContainer" parent="HBC"]
+margin_right = 1240.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="TimeContainer" type="HBoxContainer" parent="HBC/TimeScoreContainer"]
+margin_right = 1240.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 16
+
+[node name="TimeLabel" type="Label" parent="HBC/TimeScoreContainer/TimeContainer"]
+margin_right = 91.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
+text = "Time:"
+
+[node name="TimeValue" type="Label" parent="HBC/TimeScoreContainer/TimeContainer"]
+margin_left = 107.0
+margin_right = 267.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
+text = "00:00:00"
+
+[node name="ScoreContainer" type="HBoxContainer" parent="HBC/TimeScoreContainer"]
+margin_top = 46.0
+margin_right = 1240.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 16
+
+[node name="ScoreLabel" type="Label" parent="HBC/TimeScoreContainer/ScoreContainer"]
+margin_right = 126.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
+text = "Score:"
+
+[node name="ScoreValue" type="Label" parent="HBC/TimeScoreContainer/ScoreContainer"]
+margin_left = 142.0
+margin_right = 280.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
+text = "000000"

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/objects/items/BaseItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/spritesheet/spritesheet_items.png" type="Texture" id=2]
+[ext_resource path="res://src/objects/items/Star.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/sfx/sfx_sounds_fanfare3.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 48.0937
+
+[sub_resource type="Animation" id=2]
+resource_name = "bouncing"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ) ]
+}
+
+[node name="Star" instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 6
+vframes = 4
+frame = 23
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "bouncing"
+anims/bouncing = SubResource( 2 )
+
+[node name="PickUpSFX" type="AudioStreamPlayer" parent="." index="3"]
+pause_mode = 2
+stream = ExtResource( 4 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

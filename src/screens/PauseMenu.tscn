@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/fonts/kenney_future_64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/kenney_future_narrow_32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/screens/PauseMenu.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/sfx/sfx_sounds_pause1_in.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/sfx_sounds_pause1_out.wav" type="AudioStream" id=5]
+
+[node name="PauseMenu" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.321569 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MenuContainer"]
+margin_top = 281.0
+margin_right = 1280.0
+margin_bottom = 353.0
+custom_fonts/font = ExtResource( 1 )
+text = "Paused"
+align = 1
+
+[node name="Message" type="Label" parent="MenuContainer"]
+margin_top = 403.0
+margin_right = 1280.0
+margin_bottom = 439.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press Esc to Continue"
+align = 1
+
+[node name="PauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="UnpauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
